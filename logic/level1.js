@@ -25,9 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = document.getElementById('submit-budget');
 
     function updateValues() {
+        // Fixed calculation: properly calculate total by adding all slider values
         let total = 0;
         sliders.forEach(id => {
-            const value = parseInt(elements[id].slider.value);
+            // Ensure we're working with numbers by using parseInt with radix
+            const value = parseInt(elements[id].slider.value, 10);
             elements[id].value.textContent = value;
             elements[id].tooltip.textContent = value;
             total += value;
@@ -52,14 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Check minimum requirements
+        let allMinimumsMet = true;
         for (const [category, minimum] of Object.entries(MINIMUM_VALUES)) {
-            const value = parseInt(elements[category].slider.value);
+            const value = parseInt(elements[category].slider.value, 10);
             if (value < minimum) {
                 messageElement.textContent = `${category} needs at least $${minimum}`;
                 messageElement.style.color = '#ff0000';
+                allMinimumsMet = false;
                 break;
             }
         }
+
+        // Enable or disable submit button based on validation
+        submitButton.disabled = (remaining !== 0 || !allMinimumsMet);
     }
 
     // Add event listeners
@@ -70,12 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle budget submission
     submitButton.addEventListener('click', () => {
         const values = {};
+        let total = 0;
+        
         sliders.forEach(id => {
-            values[id] = parseInt(elements[id].slider.value);
+            // Fixed calculation: ensure proper number conversion
+            values[id] = parseInt(elements[id].slider.value, 10);
+            total += values[id];
         });
 
-        const total = Object.values(values).reduce((sum, val) => sum + val, 0);
-
+        // Fixed calculation: use the correctly calculated total
         // Check if total budget is correct
         if (total !== TOTAL_BUDGET) {
             window.location.href = 'FS/fail1.html';

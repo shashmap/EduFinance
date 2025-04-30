@@ -1,185 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level 7 - Retirement Planning</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-        body {
-            font-family: 'Press Start 2P', cursive;
-            background-color: #000;
-            background-image: 
-                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
-            background-size: 50px 50px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container { max-width: 800px; padding: 1.5rem; }
-        .title {
-            color: #00ff00;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
-            animation: glow 1.5s ease-in-out infinite alternate;
-        }
-        .slider-container { position: relative; padding: 1rem 0; }
-        .slider {
-            -webkit-appearance: none;
-            height: 16px;
-            background: linear-gradient(90deg, #00ff00 0%, #006400 100%);
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-            outline: none;
-        }
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 32px;
-            height: 32px;
-            background: #00ff00;
-            border: 3px solid #fff;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-        }
-        .game-info-button {
-        position: fixed;
-        background: rgba(0, 255, 0, 0.2);
-        border: 2px solid #00ff00;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 100;
-        padding: 0.75rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Level 7 - Retirement Planning</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #f8f9fa;
+      background-image:
+        radial-gradient(circle at 1px 1px, #dbeafe 1px, transparent 0),
+        radial-gradient(circle at 25px 25px, #e0e7ff 1px, transparent 0);
+      background-size: 50px 50px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
     }
 
-    @media (min-width: 768px) {
-        .game-info-button {
-            left: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .game-info-button:hover {
-            background: rgba(0, 255, 0, 0.3);
-            transform: translateY(-50%) scale(1.1);
-        }
+    .title {
+      color: #2563eb;
+      text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+      animation: glow-title 1.5s ease-in-out infinite alternate;
     }
 
-    @media (max-width: 767px) {
-        .game-info-button {
-            left: 1rem;
-            top: 1rem;
-        }
+    @keyframes glow-title {
+      from { text-shadow: 0 0 8px #2563eb; }
+      to { text-shadow: 0 0 16px #3b82f6; }
+    }
+
+    .game-info-button {
+      position: fixed;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(59, 130, 246, 0.1);
+      border: 2px solid #2563eb;
+      padding: 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .game-info-button span {
+      color: #2563eb;
+    }
+
+    @media (max-width: 768px) {
+      .game-info-button {
+        left: 1rem;
+        top: 1rem;
+        transform: none;
+      }
     }
 
     .modal {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 1000;
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.95);
+      z-index: 1000;
     }
 
     .modal.show {
-        display: flex;
-        animation: fadeIn 0.3s ease-out;
+      display: flex;
+      animation: fadeIn 0.3s ease-out;
     }
 
+    .modal > div {
+      background: white;
+      border: 2px solid #2563eb;
+    }
 
-    </style>
+    .text-blue-400 { color: #2563eb !important; }
+    .text-blue-300 { color: #60a5fa !important; }
+    .text-gray-400 { color: #64748b !important; }
+    .text-yellow-400 { color: #facc15 !important; }
+
+    input[type="range"] {
+      accent-color: #2563eb;
+    }
+
+    button#submit-plan,
+    .modal button {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    button#submit-plan:hover,
+    .modal button:hover {
+      background-color: #1e40af;
+      box-shadow: 0 0 10px rgba(30, 64, 175, 0.4);
+    }
+  </style>
 </head>
 <body>
-    <button class="game-info-button" onclick="toggleGameInfo()">
-        <span class="text-2xl text-green-400">❔</span>
+  <button class="game-info-button" onclick="toggleGameInfo()">
+    <span class="text-2xl text-blue-400">❔</span>
+  </button>
+
+  <div id="gameInfoModal" class="modal">
+    <div class="border-2 border-blue-500 rounded-lg p-8 m-auto max-w-lg">
+      <h3 class="text-2xl text-blue-400 mb-6">Level 7: Retirement Planning</h3>
+      <div class="space-y-4 text-gray-400">
+        <p>🎯 Goal: Create a balanced retirement portfolio</p>
+        <div class="pl-4 space-y-2">
+          <p>💰 Contribute minimum 10% of salary</p>
+          <p>📈 Stocks: Target 60-80% allocation</p>
+          <p>📊 Bonds: Fill remaining allocation</p>
+          <p>⚖️ Total allocation must equal 100%</p>
+        </div>
+        <p class="text-yellow-400">Balance risk and return!</p>
+      </div>
+      <button onclick="toggleGameInfo()" class="mt-6 py-2 px-4 rounded">
+        Got it!
+      </button>
+    </div>
+  </div>
+
+  <div class="container max-w-2xl w-full px-4 py-10">
+    <h1 class="title text-4xl md:text-6xl text-center mb-12">LEVEL 7</h1>
+    <h2 class="text-2xl text-center text-blue-400 mb-8">Retirement Planning</h2>
+
+    <div class="bg-white shadow-md p-6 rounded-lg mb-8">
+      <div class="space-y-6">
+        <div>
+          <label class="block text-blue-300 mb-2">401(k) Contribution (%)</label>
+          <input type="range" id="contribution" min="0" max="15" value="0" class="w-full">
+          <div class="flex justify-between mt-2">
+            <span class="text-blue-400"><span id="contributionValue">0</span>%</span>
+            <span class="text-blue-400">Max: 15%</span>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-blue-300 mb-2">Stock Allocation (%)</label>
+          <input type="range" id="stocks" min="0" max="100" value="0" class="w-full">
+          <div class="flex justify-between mt-2">
+            <span class="text-blue-400"><span id="stocksValue">0</span>%</span>
+            <span class="text-blue-400">100%</span>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-blue-300 mb-2">Bond Allocation (%)</label>
+          <input type="range" id="bonds" min="0" max="100" value="0" class="w-full">
+          <div class="flex justify-between mt-2">
+            <span class="text-blue-400"><span id="bondsValue">0</span>%</span>
+            <span class="text-blue-400">100%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mb-8">
+      <p class="text-xl text-yellow-400">Expected Return: <span id="expectedReturn">0</span>%</p>
+      <p class="text-xl text-blue-400 mt-2">Risk Level: <span id="riskLevel">Low</span></p>
+    </div>
+
+    <button id="submit-plan" class="w-full py-4 text-xl rounded-lg">
+      SUBMIT RETIREMENT PLAN
     </button>
+    <p id="message" class="mt-6 text-center text-yellow-400 text-xl"></p>
+  </div>
 
-    <div id="gameInfoModal" class="modal">
-        <div class="bg-black border-2 border-green-500 rounded-lg p-8 m-auto max-w-lg">
-            <h3 class="text-2xl text-green-400 mb-6">Level 7: Retirement Planning</h3>
-            <div class="space-y-4 text-gray-300">
-                <p>🎯 Goal: Create a balanced retirement portfolio</p>
-                <div class="pl-4 space-y-2">
-                    <p>💰 Contribute minimum 10% of salary</p>
-                    <p>📈 Stocks: Target 60-80% allocation</p>
-                    <p>📊 Bonds: Fill remaining allocation</p>
-                    <p>⚖️ Total allocation must equal 100%</p>
-                </div>
-                <p class="text-yellow-400">Balance risk and return!</p>
-            </div>
-            <button onclick="toggleGameInfo()" 
-                    class="mt-6 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">
-                Got it!
-            </button>
-        </div>
-    </div>
-
-    <div class="container max-w-800 p-6">
-        <h1 class="title text-4xl md:text-6xl text-center mb-12">LEVEL 7</h1>
-        <h2 class="text-2xl text-center text-green-400 mb-8">Retirement Planning</h2>
-
-        <div class="bg-black bg-opacity-50 p-6 rounded-lg mb-8">
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-green-300 mb-2">401(k) Contribution (%)</label>
-                    <div class="slider-container">
-                        <input type="range" id="contribution" min="0" max="15" value="0" class="slider w-full">
-                        <div class="flex justify-between mt-2">
-                            <span class="text-green-400"><span id="contributionValue">0</span>%</span>
-                            <span class="text-green-400">Max: 15%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-green-300 mb-2">Stock Allocation (%)</label>
-                    <div class="slider-container">
-                        <input type="range" id="stocks" min="0" max="100" value="0" class="slider w-full">
-                        <div class="flex justify-between mt-2">
-                            <span class="text-green-400"><span id="stocksValue">0</span>%</span>
-                            <span class="text-green-400">100%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-green-300 mb-2">Bond Allocation (%)</label>
-                    <div class="slider-container">
-                        <input type="range" id="bonds" min="0" max="100" value="0" class="slider w-full">
-                        <div class="flex justify-between mt-2">
-                            <span class="text-green-400"><span id="bondsValue">0</span>%</span>
-                            <span class="text-green-400">100%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center mb-8">
-            <p class="text-xl text-yellow-400">Expected Return: <span id="expectedReturn">0</span>%</p>
-            <p class="text-xl text-green-400 mt-2">Risk Level: <span id="riskLevel">Low</span></p>
-        </div>
-
-        <button id="submit-plan" class="w-full py-4 text-xl bg-green-600 hover:bg-green-700 rounded-lg">
-            SUBMIT RETIREMENT PLAN
-        </button>
-        <p id="message" class="mt-6 text-center text-yellow-400 text-xl"></p>
-    </div>
-    <script src="../logic/level7.js"></script>
-    <script>
-        function toggleGameInfo() {
-            const modal = document.getElementById('gameInfoModal');
-            modal.classList.toggle('show');
-        }
-    </script>
-
+  <script src="../logic/level7.js"></script>
+  <script>
+    function toggleGameInfo() {
+      const modal = document.getElementById('gameInfoModal');
+      modal.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>

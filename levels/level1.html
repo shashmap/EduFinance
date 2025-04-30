@@ -9,10 +9,10 @@
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         body {
             font-family: 'Press Start 2P', cursive;
-            background-color: #000;
+            background-color: #ffffff;
             background-image: 
-                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+                linear-gradient(to right, rgba(0, 0, 255, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 255, 0.15) 1px, transparent 1px);
             background-size: 50px 50px;
             min-height: 100vh;
             display: flex;
@@ -26,8 +26,8 @@
             margin: 0 auto;
         }
         .title {
-            color: #00ff00;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            color: #0000ff;
+            text-shadow: 0 0 10px rgba(0, 0, 255, 0.7);
             animation: glow 1.5s ease-in-out infinite alternate;
         }
         .slider-container {
@@ -56,9 +56,9 @@
         .slider {
             -webkit-appearance: none;
             height: 16px !important;
-            background: linear-gradient(90deg, #00ff00 0%, #006400 100%);
+            background: linear-gradient(90deg, #0000ff 0%, #00008b 100%);
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+            box-shadow: 0 0 15px rgba(0, 0, 255, 0.3);
             outline: none;
             transition: all 0.3s ease;
         }
@@ -66,29 +66,29 @@
             -webkit-appearance: none;
             width: 32px;
             height: 32px;
-            background: #00ff00;
+            background: #0000ff;
             border: 3px solid #fff;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
             transition: all 0.3s ease;
         }
         .slider::-webkit-slider-thumb:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+            box-shadow: 0 0 20px rgba(0, 0, 255, 0.7);
         }
         .slider::-webkit-slider-thumb:active {
             transform: scale(0.95);
         }
         .slider:hover {
             height: 18px !important;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+            box-shadow: 0 0 20px rgba(0, 0, 255, 0.4);
         }
         .slider-value {
             position: absolute;
             top: -30px;
-            background: rgba(0, 255, 0, 0.2);
-            border: 1px solid #00ff00;
+            background: rgba(0, 0, 255, 0.2);
+            border: 1px solid #0000ff;
             padding: 4px 8px;
             border-radius: 4px;
             transform: translateX(-50%);
@@ -101,14 +101,14 @@
             opacity: 1;
         }
         @keyframes glow {
-            from { text-shadow: 0 0 10px #00ff00; }
-            to { text-shadow: 0 0 20px #00ff00; }
+            from { text-shadow: 0 0 10px #0000ff; }
+            to { text-shadow: 0 0 20px #0000ff; }
         }
 
         .game-info-button {
         position: fixed;
-        background: rgba(0, 255, 0, 0.2);
-        border: 2px solid #00ff00;
+        background: rgba(0, 0, 255, 0.2);
+        border: 2px solid #0000ff;
         border-radius: 12px;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -123,7 +123,7 @@
             transform: translateY(-50%);
         }
         .game-info-button:hover {
-            background: rgba(0, 255, 0, 0.3);
+            background: rgba(0, 0, 255, 0.3);
             transform: translateY(-50%) scale(1.1);
         }
     }
@@ -153,13 +153,13 @@
 <body>
 
     <button class="game-info-button" onclick="toggleGameInfo()">
-        <span class="text-2xl text-green-400">❔</span>
+        <span class="text-2xl text-blue-400">❔</span>
     </button>
 
     <!-- Add game info modal -->
     <div id="gameInfoModal" class="modal">
-        <div class="bg-black border-2 border-green-500 rounded-lg p-8 m-auto max-w-lg">
-            <h3 class="text-2xl text-green-400 mb-6">Level 1: Budget Basics</h3>
+        <div class="bg-black border-2 border-blue-500 rounded-lg p-8 m-auto max-w-lg">
+            <h3 class="text-2xl text-blue-400 mb-6">Level 1: Budget Basics</h3>
             <div class="space-y-4 text-gray-300">
                 <p>🎯 Goal: Budget your $1000 paycheck</p>
                 <div class="pl-4 space-y-2">
@@ -171,7 +171,7 @@
                 <p class="text-yellow-400">Total must equal $1000!</p>
             </div>
             <button onclick="toggleGameInfo()" 
-                    class="mt-6 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">
+                    class="mt-6 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
                 Got it!
             </button>
         </div>
@@ -187,7 +187,7 @@
 
     <div class="container">
         <h1 class="title text-6xl text-center mb-16">LEVEL 1</h1>
-        <h2 class="text-2xl text-center text-green-400 mb-12">Budget Your First Paycheck</h2>
+        <h2 class="text-2xl text-center text-blue-400 mb-12">Budget Your First Paycheck</h2>
         
         <div class="text-center mb-8">
             <span class="text-2xl text-yellow-400">Remaining: $<span id="remaining">1000</span></span>
@@ -195,49 +195,49 @@
 
         <div class="space-y-12 mb-12">
             <div>
-                <label class="block mb-6 text-xl text-green-300">🏠 Rent</label>
+                <label class="block mb-6 text-xl text-blue-300">🏠 Rent</label>
                 <div class="slider-container">
                     <input type="range" id="rent" min="0" max="1000" value="0" class="slider w-full">
                     <div class="slider-value">$<span id="rentValueTooltip">0</span></div>
                     <div class="flex justify-between mt-4">
-                        <span class="text-green-400">$<span id="rentValue">0</span></span>
-                        <span class="text-green-400">$1000</span>
+                        <span class="text-blue-400">$<span id="rentValue">0</span></span>
+                        <span class="text-blue-400">$1000</span>
                     </div>
                 </div>
             </div>
             
             <div>
-                <label class="block mb-6 text-xl text-green-300">🍎 Groceries</label>
+                <label class="block mb-6 text-xl text-blue-300">🍎 Groceries</label>
                 <div class="slider-container">
                     <input type="range" id="groceries" min="0" max="500" value="0" class="slider w-full">
                     <div class="slider-value">$<span id="groceriesValueTooltip">0</span></div>
                     <div class="flex justify-between mt-4">
-                        <span class="text-green-400">$<span id="groceriesValue">0</span></span>
-                        <span class="text-green-400">$500</span>
+                        <span class="text-blue-400">$<span id="groceriesValue">0</span></span>
+                        <span class="text-blue-400">$500</span>
                     </div>
                 </div>
             </div>
 
             <div>
-                <label class="block mb-6 text-xl text-green-300">🚗 Transport</label>
+                <label class="block mb-6 text-xl text-blue-300">🚗 Transport</label>
                 <div class="slider-container">
                     <input type="range" id="transport" min="0" max="300" value="0" class="slider w-full">
                     <div class="slider-value">$<span id="transportValueTooltip">0</span></div>
                     <div class="flex justify-between mt-4">
-                        <span class="text-green-400">$<span id="transportValue">0</span></span>
-                        <span class="text-green-400">$300</span>
+                        <span class="text-blue-400">$<span id="transportValue">0</span></span>
+                        <span class="text-blue-400">$300</span>
                     </div>
                 </div>
             </div>
 
             <div>
-                <label class="block mb-6 text-xl text-green-300">💰 Savings</label>
+                <label class="block mb-6 text-xl text-blue-300">💰 Savings</label>
                 <div class="slider-container">
                     <input type="range" id="savings" min="0" max="400" value="0" class="slider w-full">
                     <div class="slider-value">$<span id="savingsValueTooltip">0</span></div>
                     <div class="flex justify-between mt-4">
-                        <span class="text-green-400">$<span id="savingsValue">0</span></span>
-                        <span class="text-green-400">$400</span>
+                        <span class="text-blue-400">$<span id="savingsValue">0</span></span>
+                        <span class="text-blue-400">$400</span>
                     </div>
                 </div>
             </div>
@@ -245,8 +245,8 @@
         </div>
 
         <button id="submit-budget" 
-                class="w-full py-4 text-xl bg-green-600 hover:bg-green-700 rounded-lg 
-                       transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50">
+                class="w-full py-4 text-xl bg-blue-600 hover:bg-blue-700 rounded-lg 
+                       transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50">
             SUBMIT BUDGET
         </button>
     </div>
